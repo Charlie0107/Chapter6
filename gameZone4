@@ -1,0 +1,96 @@
+public class PigDiceGame {//ch6 GZ4
+
+	public static void main(String[] args) {
+		short puntuacion = 0;
+		short puntos = 0;
+		Die die1 = new Die();
+		Die die2 = new Die();
+		boolean final = false;
+		boolean turno = true;
+    
+    
+		while(!final){
+			die1.reRoll();
+			die2.reRoll();//randomize the 2 die
+			if(die1.getValue() != 1 && die2.getValue() != 1){
+				if(turno){
+					puntuacion += die1.getValue() + die2.getValue();
+					System.out.println("Player earns " + (die1.getValue() + die2.getValue()) + " points!");
+					System.out.println("Player's new score: "+puntuacion);
+
+if(puntuacion >= 100 || puntos >= 100){
+
+final = true;
+					}
+					int choice = JOptionPane.showConfirmDialog(null, "Would you like to keep rolling?", "Keep rolling?", JOptionPane.YES_NO_OPTION);
+
+if(choice == JOptionPane.YES_OPTION){
+						System.out.println("Tira de nuevo.");
+					}
+					else if(choice == JOptionPane.NO_OPTION){
+						System.out.println("Elige tu turno.");
+						turno = false;
+					}
+					else{
+						System.out.println("CERCA.");
+						turno = false;
+					}
+				}
+				else{
+					puntos += die1.getValue() + die2.getValue();
+					System.out.println("Points " + (die1.getValue() + die2.getValue()) + " points!");
+					System.out.println("Nueva puntuacion: "+puntos);
+					
+          if(puntuacion >= 100 || puntos >= 100){
+						final = true;
+					}
+					double rand = Math.random();
+					if(rand >= 0.5){
+						System.out.println("Tira de nuevo.");
+					}
+					else{
+						System.out.println("Tira de nuevo.");
+						turno = true;
+					}
+				}
+			}
+			else if(die1.getValue() == 1 && die2.getValue() == 1){
+				if(turno){
+					puntuacion = 0;
+					turno = false;
+				}
+				else{
+					puntos = 0;
+					turno = true;
+				}
+				
+			}
+			else{
+				if(turno){
+					turno = false;
+					System.out.println("Turn passed to the Computer, as the player rolled a 1");
+				}
+				else{
+					turno = true;
+					System.out.println("Turn passed to the Player, as the computer rolled a 1");
+				}
+				
+			}
+			if(puntuacion >= 100 || puntos >= 100){
+				final = true;
+			}
+			
+		}
+		if(puntuacion >= 100){
+			System.out.println("El jugador gano con " + puntuacion + " points! " + (puntuacion-puntos) + " mas puntos que la computadora!");
+		}
+		else if(puntos >= 100){
+			System.out.println("La computadora gano con " + puntos + " points! " + (puntos-puntuacion) + " mas puntos que el jugador!");
+		}
+		else{
+			System.out.println("Repetir.");
+		}
+
+	}
+
+}
