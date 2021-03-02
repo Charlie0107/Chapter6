@@ -1,0 +1,29 @@
+public class MyCharacter {
+    
+    private String nombre;
+    private int numero_ojos;
+    private int numero_vidas;
+    private int altura;
+    
+public void setNombre(String nombre_personaje){
+    nombre = nombre_personaje;
+}
+public String getNombre(){
+    return nombre;
+}
+public void setOjos(int ojos){
+    numero_ojos = ojos;
+}
+public int getOjos(){
+    return numero_ojos;
+}
+public void setVidas(int vida){
+    numero_vidas = vida;
+}
+public int getVidas(){
+    return numero_vidas;
+}
+public int getAltura(){
+   return altura;
+}
+}
